@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RAG Assistant</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="app-header">
+        <div class="logo">R</div>
+        <div>
+          <h1>RAG Assistant</h1>
+          <p>Ask your documents and webpages</p>
+        </div>
+      </header>
+
+      <section class="ingest-section">
+        <h2>Index a webpage</h2>
+
+        <label for="urlInput">Webpage URL</label>
+        <input id="urlInput" type="url" placeholder="https://example.com" />
+
+        <button id="ingestButton" class="primary" type="button">
+          Index webpage
+        </button>
+
+        <button id="currentPageButton" class="secondary" type="button">
+          Index current tab
+        </button>
+
+        <p id="ingestStatus" class="status" role="status"></p>
+
+        <div class="section-divider"></div>
+
+        <h2>Upload a PDF</h2>
+        <label for="pdfInput">Choose a PDF file</label>
+
+        <input id="pdfInput" type="file" accept="application/pdf,.pdf" />
+
+        <button id="uploadPdfButton" class="secondary" type="button">
+          Upload and index PDF
+        </button>
+
+        <p id="uploadStatus" class="status" role="status"></p>
+      </section>
+
+      <section class="chat-section">
+        <h2>Chat with your sources</h2>
+
+        <div id="messages" class="messages" aria-live="polite">
+          <div class="message assistant">
+            Hi! Index a webpage or upload a PDF, then ask me a question.
+          </div>
+        </div>
+
+        <form id="chatForm">
+          <textarea
+            id="questionInput"
+            rows="2"
+            placeholder="Ask a question..."
+            required
+          ></textarea>
+
+          <button id="sendButton" type="submit" class="primary">Send</button>
+        </form>
+      </section>
+
+      <p class="footer">Powered by FastAPI, Gemini and Qdrant</p>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
